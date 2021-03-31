@@ -1,0 +1,32 @@
+<apex:page standardController="Course_Invoice__c" showHeader="false" sidebar="false" renderAs="pdf" applyBodyTag="false">
+    <apex:pageBlock rendered="True" title="Services Invoice Report" >
+        <apex:outputText value="{!NOW()}"/>
+        <p>Force Training Ltd,</p>
+        <apex:pageBlockTable width="100%" border="1px solid #cbcbcb;" value="{!Course_Invoice__c}" var="course" cellpadding="10">
+            <apex:column width="33%" value="{!course.Name}"/>
+            <apex:column width="33%" value="{!course.service_invoice_id__c}"/>
+            <apex:column width="33%" value="{!course.Invoice_Status__c}"/>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+
+    <apex:pageBlock rendered="True" title=" " >
+        <apex:pageBlockTable width="100%" border="1px solid #cbcbcb;" value="{!Course_Invoice__c}" var="course" cellpadding="10">
+            <apex:column width="33%" value="{!course.Opportunity__c}"/>
+            <apex:column width="33%" value="{!course.Opportunity__r.Course_Name__c}"/>
+            <apex:column width="33%" value="{!course.Opportunity__r.Course_Codes__c}"/>
+        </apex:pageBlockTable>
+        <apex:pageBlockTable width="100%" border="1px solid #cbcbcb;" value="{!Course_Invoice__c}" var="course" cellpadding="10">
+            <apex:column width="33%" value="{!course.Opportunity__r.AccountId}" />
+            <apex:column width="33%" value="{!course.Opportunity__r.Course_Start_Date__c}" />
+            <apex:column width="33%" value="{!course.Opportunity__r.CloseDate}" />
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+        
+    <apex:pageBlock rendered="True" title=" " >
+        <apex:pageBlockTable width="100%" border="1px solid #cbcbcb;" value="{!Course_Invoice__c}" var="course" cellpadding="10">
+            <apex:column width="33%" value="{!course.VAT_Value__c}" />
+            <apex:column width="33%" value="{!course.Service_Invoice_Subtotal__c}" />
+            <apex:column width="33%" value="{!course.Service_Invoice_Total__c}" />
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:page>
